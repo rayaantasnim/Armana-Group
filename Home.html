@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armana Group | Official Premium Portal</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP & ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Lenis Smooth Scroll CDN -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #03050a; color: #f3f4f6; overflow-x: hidden; }
+        .glass-nav { background: rgba(3, 5, 10, 0.9); backdrop-filter: blur(16px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .hero-video-bg { object-fit: cover; width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #03050a; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1b2a4a; border-radius: 3px; }
+        /* Ultra-premium hover transitions */
+        .premium-hover { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .premium-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.3); border-color: rgba(96, 165, 250, 0.5); }
+    </style>
+</head>
+<body class="custom-scrollbar">
+
+    <!-- Scroll-Driven 3D Video Background Engine -->
+    <video id="scroll-video" class="hero-video-bg" muted playsinline preload="auto">
+        <source src="https://armanagroup.com/img/videos/1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Dual Navbar Header -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex justify-between items-center bg-transparent">
+        
+        <!-- Left Icon: Opens Left-Folded Main Navigation Drawer -->
+        <button id="left-menu-btn" class="flex items-center gap-2 focus:outline-none group bg-white/10 hover:bg-blue-600/30 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/15 premium-hover">
+            <div class="w-5 h-4 flex flex-col justify-between">
+                <span class="w-full h-0.5 bg-white transition-transform group-hover:scale-x-110"></span>
+                <span class="w-full h-0.5 bg-white"></span>
+                <span class="w-full h-0.5 bg-white transition-transform group-hover:scale-x-90"></span>
+            </div>
+            <span class="text-xs uppercase font-bold tracking-widest text-white hidden sm:inline">Menu</span>
+        </button>
+
+        <!-- Center Brand & Tagline -->
+        <a href="Home.html" class="flex items-center gap-3 text-center group">
+            <img src="armana-emblem.jpg" alt="Armana Emblem" class="h-9 w-9 rounded-full object-cover border border-blue-400/40 shadow-md group-hover:scale-110 transition-transform duration-300">
+            <div class="hidden lg:flex flex-col text-left">
+                <span class="text-white font-extrabold tracking-wider text-sm group-hover:text-blue-400 transition-colors">ARMANA GROUP</span>
+                <span class="text-[10px] text-blue-300 tracking-widest uppercase">Global Denim Conglomerate Since 1995</span>
+            </div>
+        </a>
+
+        <!-- Right Icon: Opens Right-Folded Current Page Sections Drawer -->
+        <button id="right-menu-btn" class="flex items-center gap-2 focus:outline-none group bg-white/10 hover:bg-blue-600/30 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/15 premium-hover">
+            <span class="text-xs uppercase font-bold tracking-widest text-white hidden sm:inline">Sections</span>
+            <div class="w-5 h-4 flex flex-col justify-between items-end">
+                <span class="w-5 h-0.5 bg-white"></span>
+                <span class="w-3.5 h-0.5 bg-white"></span>
+                <span class="w-5 h-0.5 bg-white"></span>
+            </div>
+        </button>
+    </nav>
+
+    <!-- Left-Folded Main Navigation Drawer (Pages) -->
+    <div id="left-drawer" class="fixed inset-y-0 left-0 w-80 bg-[#03050a]/98 backdrop-blur-2xl z-50 transform -translate-x-full transition-transform duration-500 shadow-2xl border-r border-white/10 flex flex-col justify-between p-8">
+        <div>
+            <div class="flex justify-between items-center mb-8 pb-4 border-b border-gray-800">
+                <div class="flex items-center gap-3">
+                    <img src="armana-emblem.jpg" alt="Logo" class="w-8 h-8 rounded-full object-cover">
+                    <span class="font-bold text-white tracking-wider text-sm">ARMANA PORTAL</span>
+                </div>
+                <button id="close-left-drawer" class="text-gray-400 hover:text-white text-xl font-bold transition-colors">&times;</button>
+            </div>
+            <div class="flex flex-col gap-4 text-sm font-semibold text-gray-300">
+                <a href="Home.html" class="hover:text-blue-400 hover:translate-x-1 transition-all py-1">Home page</a>
+                <a href="Why-Armana.html" class="hover:text-blue-400 hover:translate-x-1 transition-all py-1">Why Armana</a>
+                <a href="About.html" class="hover:text-blue-400 hover:translate-x-1 transition-all py-1">About</a>
+                <a href="Products.html" class="hover:text-blue-400 hover:translate-x-1 transition-all py-1">Products</a>
+                <a href="Factories.html" class="hover:text-blue-400 hover:translate-x-1 transition-all py-1">Factories</a>
+                <a href="Sustainability.html" class="hover:text-blue-400 hover:translate-x-1 transition-all py-1">Sustainability</a>
+                <a href="Digitalization.html" class="hover:text-blue-400 hover:translate-x-1 transition-all py-1">Digitalization</a>
+                <a href="Partners.html" class="hover:text-blue-400 hover:translate-x-1 transition-all py-1">Partners</a>
+                <a href="KCF.html" class="hover:text-blue-400 hover:translate-x-1 transition-all py-1">KCF</a>
+                <a href="Contact.html" class="hover:text-blue-400 hover:translate-x-1 transition-all py-1">Contact</a>
+            </div>
+        </div>
+        <div class="text-xs text-gray-500 pt-4 border-t border-gray-800">
+            Official Enterprise Navigation
+        </div>
+    </div>
+
+    <!-- Right-Folded Page Topics Drawer (Current Page Sections) -->
+    <div id="right-drawer" class="fixed inset-y-0 right-0 w-80 bg-[#03050a]/98 backdrop-blur-2xl z-50 transform translate-x-full transition-transform duration-500 shadow-2xl border-l border-white/10 flex flex-col justify-between p-8">
+        <div>
+            <div class="flex justify-between items-center mb-8 pb-4 border-b border-gray-800">
+                <span class="font-bold text-white tracking-wider text-sm">PAGE SECTIONS</span>
+                <button id="close-right-drawer" class="text-gray-400 hover:text-white text-xl font-bold transition-colors">&times;</button>
+            </div>
+            <div class="flex flex-col gap-5 text-sm font-semibold text-gray-300">
+                <a href="#why-armana" class="right-drawer-link hover:text-blue-400 hover:translate-x-1 transition-all">01. Why Armana & Heritage</a>
+                <a href="#philosophy" class="right-drawer-link hover:text-blue-400 hover:translate-x-1 transition-all">02. Strategic Pillars</a>
+                <a href="#about" class="right-drawer-link hover:text-blue-400 hover:translate-x-1 transition-all">03. Corporate Profile & Ethos</a>
+                <a href="#stats" class="right-drawer-link hover:text-blue-400 hover:translate-x-1 transition-all">04. Key Metrics & Capacity</a>
+                <a href="#factories" class="right-drawer-link hover:text-blue-400 hover:translate-x-1 transition-all">05. Manufacturing Infrastructure</a>
+                <a href="#sustainability-focus" class="right-drawer-link hover:text-blue-400 hover:translate-x-1 transition-all">06. Ecological Commitment</a>
+                <a href="#gallery" class="right-drawer-link hover:text-blue-400 hover:translate-x-1 transition-all">07. Production Video Showcase</a>
+            </div>
+        </div>
+        <div class="text-xs text-gray-500 pt-4 border-t border-gray-800">
+            Armana Group Home Portal
+        </div>
+    </div>
+
+    <!-- Cinematic Hero Section with Scroll Overlays -->
+    <section class="relative h-screen flex flex-col justify-center items-center text-center px-6 z-10 pointer-events-none">
+        <div class="max-w-4xl mx-auto space-y-6">
+            <img src="armana-emblem.jpg" alt="Armana Emblem" class="w-24 h-24 mx-auto rounded-full shadow-2xl border-2 border-blue-400/40 object-cover mb-4 hover:scale-105 transition-transform duration-300">
+            <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight text-white drop-shadow-2xl">
+                Global Denim <span class="text-blue-400 hover:text-cyan-300 transition-colors">Supremacy</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-200 font-light max-w-2xl mx-auto drop-shadow-md">
+                Uncompromising ethics, state-of-the-art automated laundries, and over two decades of international apparel leadership.
+            </p>
+        </div>
+        <div class="absolute bottom-10 animate-bounce text-white text-xs tracking-widest uppercase">
+            Scroll to Drive 3D Experience
+        </div>
+    </section>
+
+    <!-- Main Content Wrapper with Dark-to-Light Background Matrix Transition -->
+    <div class="relative z-20 bg-[#070b14] text-gray-100 transition-colors duration-1000" id="content-container">
+
+        <!-- Why Armana & Corporate Philosophy -->
+        <section id="why-armana" class="py-24 px-6 md:px-16 max-w-7xl mx-auto space-y-12">
+            <div class="text-center space-y-4 max-w-4xl mx-auto">
+                <span class="text-blue-400 uppercase tracking-widest text-xs font-bold px-4 py-1.5 bg-blue-950/60 rounded-full border border-blue-800/50 hover:bg-blue-900 transition-colors inline-block">Industry Vanguard</span>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white">The Absolute Peak of the Global Denim Industry</h2>
+                <p class="text-gray-300 leading-relaxed text-lg">
+                    Armana Group is a prominent Bangladeshi industrial conglomerate and global leader in high-end denim manufacturing and woven garments. Founded in 1995 with a core philosophy centered on ethical and sustainable fashion, they have grown into an export powerhouse shipping to over 40 countries and working with major international retail giants like Levi's, GAP, H&M, and Benetton.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
+                <div class="bg-[#0b1329] p-8 rounded-2xl border border-blue-900/40 shadow-xl space-y-4 premium-hover group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600/20 flex items-center justify-center text-blue-400 font-bold text-xl group-hover:bg-blue-600 group-hover:text-white transition-all">01</div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Global Footprint</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Operating across strategic manufacturing zones in Bangladesh, Armana maintains seamless logistics frameworks that ensure zero-delay international deliveries to tier-one global fashion houses.
+                    </p>
+                </div>
+                <div class="bg-[#0b1329] p-8 rounded-2xl border border-blue-900/40 shadow-xl space-y-4 premium-hover group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600/20 flex items-center justify-center text-blue-400 font-bold text-xl group-hover:bg-blue-600 group-hover:text-white transition-all">02</div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Uncompromising Quality</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Every single meter of fabric undergoes rigorous multi-stage tensile and chemical analysis within our accredited in-house testing laboratories before cutting and assembly.
+                    </p>
+                </div>
+                <div class="bg-[#0b1329] p-8 rounded-2xl border border-blue-900/40 shadow-xl space-y-4 premium-hover group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600/20 flex items-center justify-center text-blue-400 font-bold text-xl group-hover:bg-blue-600 group-hover:text-white transition-all">03</div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Sustainable Innovation</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Pioneering advanced biological ETP water treatment, ozone washing tech, and laser-finishing mechanisms to drastically reduce carbon footprint and water consumption.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Pillars / Deep Philosophy -->
+        <section id="philosophy" class="py-16 px-6 md:px-16 max-w-7xl mx-auto bg-[#0b1329]/60 border border-blue-900/30 rounded-3xl p-8 md:p-12 space-y-8 premium-hover">
+            <div class="max-w-3xl space-y-4">
+                <span class="text-blue-400 uppercase tracking-widest text-xs font-bold">Operational Excellence</span>
+                <h3 class="text-2xl md:text-4xl font-bold text-white">Engineering the Future of Garments Manufacturing</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    At Armana Group, technology meets craftsmanship. Our production architecture integrates real-time IoT tracking across sewing lines, computerized pattern grading, and automated material handling. This ecosystem eliminates bottlenecks, reduces waste, and guarantees absolute uniformity across millions of units produced annually.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+                <div class="space-y-2 border-l-2 border-blue-500 pl-4 hover:border-cyan-300 transition-colors">
+                    <h4 class="text-white font-semibold">Ethical Labor Standards</h4>
+                    <p class="text-xs text-gray-400">Providing safe, fair, and empowering working conditions for our 20,000+ skilled personnel.</p>
+                </div>
+                <div class="space-y-2 border-l-2 border-blue-500 pl-4 hover:border-cyan-300 transition-colors">
+                    <h4 class="text-white font-semibold">Advanced Laundries</h4>
+                    <p class="text-xs text-gray-400">Equipped with 1,000+ specialized laundry machines capable of complex vintage and stone-wash effects.</p>
+                </div>
+                <div class="space-y-2 border-l-2 border-blue-500 pl-4 hover:border-cyan-300 transition-colors">
+                    <h4 class="text-white font-semibold">Client-Centric R&D</h4>
+                    <p class="text-xs text-gray-400">Dedicated design labs collaborating closely with global brands to forecast seasonal denim trends.</p>
+                </div>
+                <div class="space-y-2 border-l-2 border-blue-500 pl-4 hover:border-cyan-300 transition-colors">
+                    <h4 class="text-white font-semibold">Green Infrastructure</h4>
+                    <p class="text-xs text-gray-400">LEED-certified green factory concepts implemented across our latest industrial expansions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Heritage Section -->
+        <section id="about" class="py-20 px-6 md:px-16 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <span class="text-blue-400 uppercase tracking-widest text-xs font-bold px-3 py-1 bg-blue-950/50 rounded-full border border-blue-800/50">Infrastructure Depth</span>
+                <h3 class="text-2xl md:text-4xl font-bold tracking-tight text-white">Advanced Scale & Automated Excellence</h3>
+                <p class="text-gray-300 leading-relaxed text-base">
+                    Their manufacturing infrastructure is massive, featuring core entities like Denimach Ltd., multiple high-tech garment production units, thousands of advanced sewing lines, automated in-house laundries with biological Effluent Treatment Plants (ETP), and a workforce numbering over 20,000.
+                </p>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    By sustaining rigorous compliance audits and investing heavily in worker training programs, Armana Group ensures that every product leaving our facilities represents the pinnacle of ethical Bangladeshi industrial capability.
+                </p>
+                <div class="pt-2">
+                    <a href="#factories" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300 text-sm hover:scale-105">
+                        Inspect Facilities
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-800 group premium-hover">
+                <img src="about.jpg" alt="Armana Heritage Card" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+            </div>
+        </section>
+
+        <!-- Live Statistics Counter Grid Section -->
+        <section id="stats" class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+            <div class="text-center mb-16 space-y-3">
+                <span class="text-blue-400 uppercase tracking-widest text-xs font-bold">Key Metrics</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Armana Group at a Glance</h2>
+                <p class="text-gray-400 text-sm max-w-2xl mx-auto">Quantifying our industrial capacity, output volume, and global reach across all enterprise verticals.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+                <!-- Stat Block 1 -->
+                <div class="bg-[#0b1329] p-8 rounded-2xl border border-blue-900/30 shadow-xl flex flex-col justify-center items-center premium-hover group">
+                    <span class="text-4xl md:text-5xl font-extrabold text-white mb-2 counter group-hover:text-blue-400 transition-colors" data-target="20000" data-suffix="+">0</span>
+                    <span class="text-xs uppercase tracking-widest text-blue-300 font-semibold">Workforce</span>
+                </div>
+                <!-- Stat Block 2 -->
+                <div class="bg-[#101b38] p-8 rounded-2xl border border-blue-900/30 shadow-xl flex flex-col justify-center items-center premium-hover group">
+                    <span class="text-4xl md:text-5xl font-extrabold text-white mb-2 counter group-hover:text-blue-400 transition-colors" data-target="4" data-suffix="">0</span>
+                    <span class="text-xs uppercase tracking-widest text-blue-300 font-semibold">Garment Factories</span>
+                </div>
+                <!-- Stat Block 3 -->
+                <div class="bg-[#152347] p-8 rounded-2xl border border-blue-900/30 shadow-xl flex flex-col justify-center items-center premium-hover group">
+                    <span class="text-4xl md:text-5xl font-extrabold text-white mb-2 counter group-hover:text-blue-400 transition-colors" data-target="100" data-suffix="+">0</span>
+                    <span class="text-xs uppercase tracking-widest text-blue-300 font-semibold">Sewing Lines</span>
+                </div>
+                <!-- Stat Block 4 -->
+                <div class="bg-[#1a2d58] p-8 rounded-2xl border border-blue-900/30 shadow-xl flex flex-col justify-center items-center premium-hover group">
+                    <span class="text-4xl md:text-5xl font-extrabold text-white mb-2 counter group-hover:text-blue-400 transition-colors" data-target="5500" data-suffix="+">0</span>
+                    <span class="text-xs uppercase tracking-widest text-blue-300 font-semibold">Apparel Manufacturing Machines</span>
+                </div>
+                <!-- Stat Block 5 -->
+                <div class="bg-[#1a2d58] p-8 rounded-2xl border border-blue-900/30 shadow-xl flex flex-col justify-center items-center premium-hover group">
+                    <span class="text-4xl md:text-5xl font-extrabold text-white mb-2 counter group-hover:text-blue-400 transition-colors" data-target="54" data-suffix="">0</span>
+                    <span class="text-xs uppercase tracking-widest text-blue-300 font-semibold">Million Woven Bottoms & Related Products Per Annum</span>
+                </div>
+                <!-- Stat Block 6 -->
+                <div class="bg-[#152347] p-8 rounded-2xl border border-blue-900/30 shadow-xl flex flex-col justify-center items-center premium-hover group">
+                    <span class="text-4xl md:text-5xl font-extrabold text-white mb-2 counter group-hover:text-blue-400 transition-colors" data-target="3" data-suffix="">0</span>
+                    <span class="text-xs uppercase tracking-widest text-blue-300 font-semibold">Washing Units</span>
+                </div>
+                <!-- Stat Block 7 -->
+                <div class="bg-[#101b38] p-8 rounded-2xl border border-blue-900/30 shadow-xl flex flex-col justify-center items-center premium-hover group">
+                    <span class="text-4xl md:text-5xl font-extrabold text-white mb-2 counter group-hover:text-blue-400 transition-colors" data-target="1000" data-suffix="+">0</span>
+                    <span class="text-xs uppercase tracking-widest text-blue-300 font-semibold">Laundry Machines & Equipment</span>
+                </div>
+                <!-- Stat Block 8 -->
+                <div class="bg-[#0b1329] p-8 rounded-2xl border border-blue-900/30 shadow-xl flex flex-col justify-center items-center premium-hover group">
+                    <span class="text-4xl md:text-5xl font-extrabold text-white mb-2 counter group-hover:text-blue-400 transition-colors" data-target="40" data-suffix="+">0</span>
+                    <span class="text-xs uppercase tracking-widest text-blue-300 font-semibold">Export Destinations Across the World</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Manufacturing & Factory Infrastructure Section -->
+        <section id="factories" class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+            <div class="text-center mb-16 space-y-3">
+                <span class="text-blue-400 uppercase tracking-widest text-xs font-bold">Physical Ecosystem</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Manufacturing Plants & Global Logistics</h2>
+                <p class="text-gray-400 text-sm max-w-2xl mx-auto">Explore our specialized production units strategically distributed to maximize efficiency, quality control, and export agility.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Factory Card 1 -->
+                <div class="bg-[#0f172a] rounded-2xl overflow-hidden border border-gray-800 shadow-xl group premium-hover">
+                    <div class="overflow-hidden h-60">
+                        <img src="armana-factory.jpg" alt="Armana Factory" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Armana Factory</h3>
+                        <p class="text-gray-400 text-sm">State-of-the-art production floors equipped with advanced automated systems and continuous assembly streams.</p>
+                    </div>
+                </div>
+                <!-- Factory Card 2 -->
+                <div class="bg-[#0f172a] rounded-2xl overflow-hidden border border-gray-800 shadow-xl group premium-hover">
+                    <div class="overflow-hidden h-60">
+                        <img src="denimach-factory.jpg" alt="Denimach Factory" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Denimach Unit</h3>
+                        <p class="text-gray-400 text-sm">Specialized denim washing and finishing hub meeting strict global ecological and chemical discharge standards.</p>
+                    </div>
+                </div>
+                <!-- Factory Card 3 -->
+                <div class="bg-[#0f172a] rounded-2xl overflow-hidden border border-gray-800 shadow-xl group premium-hover">
+                    <div class="overflow-hidden h-60">
+                        <img src="denitex-factory.jpg" alt="Denitex Factory" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Denitex Facility</h3>
+                        <p class="text-gray-400 text-sm">High-capacity apparel manufacturing complex driving large-scale global output for multinational fashion brands.</p>
+                    </div>
+                </div>
+                <!-- Factory Card 4 -->
+                <div class="bg-[#0f172a] rounded-2xl overflow-hidden border border-gray-800 shadow-xl group premium-hover">
+                    <div class="overflow-hidden h-60">
+                        <img src="zyta-factory.jpg" alt="Zyta Factory" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Zyta Enterprise</h3>
+                        <p class="text-gray-400 text-sm">Precision tailoring, intricate stitching configurations, and rigorous quality assurance infrastructure.</p>
+                    </div>
+                </div>
+                <!-- Logistics Card -->
+                <div class="bg-[#0f172a] rounded-2xl overflow-hidden border border-gray-800 shadow-xl group md:col-span-2 premium-hover">
+                    <div class="overflow-hidden h-60">
+                        <img src="armach.jpg" alt="Global Logistics" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Global Export Logistics</h3>
+                        <p class="text-gray-400 text-sm">Seamless supply chain connectivity delivering top-tier apparel products across 40+ worldwide destinations with complete container tracking and port-to-door reliability.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sustainability Focus Section -->
+        <section id="sustainability-focus" class="py-16 px-6 md:px-16 max-w-7xl mx-auto space-y-8">
+            <div class="bg-gradient-to-r from-blue-950/80 to-[#0b1329] border border-blue-800/40 rounded-3xl p-8 md:p-12 shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center premium-hover">
+                <div class="space-y-6">
+                    <span class="text-blue-400 uppercase tracking-widest text-xs font-bold">Ecological Stewardship</span>
+                    <h3 class="text-2xl md:text-4xl font-bold text-white">Zero Compromise on Environmental Responsibility</h3>
+                    <p class="text-gray-300 leading-relaxed text-sm">
+                        As a pillar of modern industrial manufacturing, Armana Group integrates closed-loop water recycling systems and advanced biological Effluent Treatment Plants (ETP). We ensure that every drop of water used in our washing units is treated, purified, and repurposed, protecting local ecosystems while meeting international green compliance guidelines.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="Sustainability.html" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-300 hover:scale-105">Learn About Sustainability</a>
+                    </div>
+                </div>
+                <div class="space-y-4 bg-black/40 p-6 rounded-2xl border border-white/10">
+                    <div class="flex justify-between items-center pb-3 border-b border-gray-800 hover:border-blue-500 transition-colors">
+                        <span class="text-sm font-semibold text-gray-200">Water Recycling Rate</span>
+                        <span class="text-blue-400 font-bold">85%</span>
+                    </div>
+                    <div class="flex justify-between items-center pb-3 border-b border-gray-800 hover:border-blue-500 transition-colors">
+                        <span class="text-sm font-semibold text-gray-200">Renewable Energy Integration</span>
+                        <span class="text-blue-400 font-bold">Active Solar Units</span>
+                    </div>
+                    <div class="flex justify-between items-center hover:text-white transition-colors">
+                        <span class="text-sm font-semibold text-gray-200">Chemical Compliance</span>
+                        <span class="text-blue-400 font-bold">ZDHC Aligned</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cloud Video Gallery Section -->
+        <section id="gallery" class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+            <div class="text-center mb-16 space-y-3">
+                <span class="text-blue-400 uppercase tracking-widest text-xs font-bold">Video Showcase</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Inside Our Production Lines</h2>
+                <p class="text-gray-400 text-sm max-w-xl mx-auto">Witness automated manufacturing velocity and precision craftsmanship in real-time motion.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="rounded-2xl overflow-hidden shadow-2xl border border-gray-800 bg-black opacity-0 transition-all duration-1000 transform translate-y-8 video-reveal premium-hover">
+                    <video class="w-full h-80 object-cover" autoplay muted loop playsinline preload="auto">
+                        <source src="https://armanagroup.com/img/videos/1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-2xl border border-gray-800 bg-black opacity-0 transition-all duration-1000 transform translate-y-8 video-reveal premium-hover">
+                    <video class="w-full h-80 object-cover" autoplay muted loop playsinline preload="auto">
+                        <source src="https://armanagroup.com/img/videos/5.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium Footer with Official Contact Info -->
+        <footer class="bg-[#03050a] border-t border-gray-800 py-16 px-6 md:px-12 text-gray-400 text-sm relative">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start pb-12 border-b border-gray-800/80">
+                <!-- Brand Column -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 group cursor-pointer">
+                        <img src="armana-emblem.jpg" alt="Armana Logo" class="h-9 w-9 rounded-full object-cover border border-blue-400/40 group-hover:scale-110 transition-transform">
+                        <span class="text-white font-extrabold tracking-wider text-base">ARMANA GROUP</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed max-w-sm">
+                        Global denim conglomerate setting international standards in sustainable textile engineering, high-performance manufacturing, and ethical labor practices since 1995.
+                    </p>
+                </div>
+                
+                <!-- Official Contact Info Column -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold tracking-wider text-sm uppercase">Head Office:</h4>
+                    <p class="text-xs leading-relaxed text-gray-300">
+                        Armana Group Ltd.<br>
+                        House No. 26, Road No. 71,<br>
+                        Gulshan 2, Dhaka 1212,<br>
+                        Bangladesh
+                    </p>
+                </div>
+
+                <!-- Communication Matrix Column -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold tracking-wider text-sm uppercase">Direct Inquiries:</h4>
+                    <div class="text-xs space-y-1.5 text-gray-300">
+                        <p><strong class="text-white">Phone:</strong> <a href="tel:+8802222298456" class="hover:text-blue-400 transition-colors">+88 02 222 298 456</a></p>
+                        <p><strong class="text-white">Fax:</strong> +88 02 222 299 669</p>
+                        <p><strong class="text-white">Email:</strong> <a href="mailto:info@armanagroup.com" class="hover:text-blue-400 transition-colors">info@armanagroup.com</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright & Credits Sub-Bar -->
+            <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+                <p>© All right reserved by Armana Group Ltd 2018</p>
+                <p>
+                    Designed by: <a href="https://rayaantasnim.github.io/Rayaan-Tasnim/" target="_blank" class="text-blue-400 hover:underline font-semibold">Rayaan Tasnim</a>. Click to see his CV
+                </p>
+                <div class="flex gap-6 font-medium">
+                    <a href="Home.html" class="hover:text-white transition-colors">Home</a>
+                    <a href="#why-armana" class="hover:text-white transition-colors">Why Armana</a>
+                    <a href="#factories" class="hover:text-white transition-colors">Factories</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Script Engine -->
+    <script>
+        // Initialize Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smooth: true
+        });
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // GSAP ScrollTrigger Registration
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Scroll-Driven 3D Video Playback Engine (Play forward on scroll down, reverse on scroll up)
+        const vid = document.getElementById('scroll-video');
+        vid.pause();
+        
+        vid.addEventListener('loadedmetadata', function() {
+            ScrollTrigger.create({
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1.5,
+                onUpdate: (self) => {
+                    if (vid.duration) {
+                        vid.currentTime = self.progress * vid.duration;
+                    }
+                }
+            });
+        });
+
+        // Navbar State Transition on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-nav', 'py-3');
+                navbar.classList.remove('py-4', 'bg-transparent');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-3');
+                navbar.classList.add('py-4', 'bg-transparent');
+            }
+        });
+
+        // Dual Drawer Toggles (Left & Right Drawers)
+        const leftDrawer = document.getElementById('left-drawer');
+        const rightDrawer = document.getElementById('right-drawer');
+        const leftMenuBtn = document.getElementById('left-menu-btn');
+        const rightMenuBtn = document.getElementById('right-menu-btn');
+        const closeLeftDrawer = document.getElementById('close-left-drawer');
+        const closeRightDrawer = document.getElementById('close-right-drawer');
+        const rightDrawerLinks = document.querySelectorAll('.right-drawer-link');
+
+        leftMenuBtn.addEventListener('click', () => {
+            leftDrawer.classList.remove('-translate-x-full');
+            rightDrawer.classList.add('translate-x-full');
+        });
+
+        closeLeftDrawer.addEventListener('click', () => {
+            leftDrawer.classList.add('-translate-x-full');
+        });
+
+        rightMenuBtn.addEventListener('click', () => {
+            rightDrawer.classList.remove('translate-x-full');
+            leftDrawer.classList.add('-translate-x-full');
+        });
+
+        closeRightDrawer.addEventListener('click', () => {
+            rightDrawer.classList.add('translate-x-full');
+        });
+
+        rightDrawerLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                rightDrawer.classList.add('translate-x-full');
+            });
+        });
+
+        // Animated Numeral Counters (0 to Target) on Scroll
+        const counters = document.querySelectorAll('.counter');
+        let animated = false;
+
+        ScrollTrigger.create({
+            trigger: '#stats',
+            start: 'top 80%',
+            onEnter: () => {
+                if (!animated) {
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const suffix = counter.getAttribute('data-suffix');
+                        let count = 0;
+                        const duration = 2000;
+                        const increment = target / (duration / 16);
+
+                        const updateCounter = () => {
+                            count += increment;
+                            if (count < target) {
+                                counter.innerText = Math.ceil(count) + suffix;
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.innerText = target + suffix;
+                            }
+                        };
+                        updateCounter();
+                    });
+                    animated = true;
+                }
+            }
+        });
+
+        // Scroll-Triggered Fade-In for Video Gallery Elements
+        const videoReveals = document.querySelectorAll('.video-reveal');
+        videoReveals.forEach((el) => {
+            ScrollTrigger.create({
+                trigger: el,
+                start: 'top 85%',
+                onEnter: () => {
+                    el.classList.remove('opacity-0', 'translate-y-8');
+                    el.classList.add('opacity-100', 'translate-y-0');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

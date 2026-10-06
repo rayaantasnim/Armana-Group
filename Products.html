@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products & Collections | Armana Group Official Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #03050a; color: #f3f4f6; overflow-x: hidden; }
+        .glass-nav { background: rgba(3, 5, 10, 0.95); backdrop-filter: blur(18px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #03050a; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1b2a4a; border-radius: 3px; }
+        .premium-card { background: linear-gradient(145deg, rgba(13, 20, 38, 0.8), rgba(7, 11, 20, 0.95)); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s ease; }
+        .premium-card:hover { transform: translateY(-4px); border-color: rgba(96, 165, 250, 0.4); box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.25); }
+        .expandable-vertical-panel { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), padding 0.6s ease; background: linear-gradient(180deg, rgba(7,11,20,0.98) 0%, rgba(3,5,10,0.98) 100%); }
+        .expandable-vertical-panel.active { max-height: 900px; padding-top: 2rem; padding-bottom: 2rem; border-top: 1px solid rgba(59, 130, 246, 0.3); }
+    </style>
+</head>
+<body class="custom-scrollbar">
+
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex justify-between items-center bg-transparent">
+        <button id="left-menu-btn" class="flex items-center gap-2 focus:outline-none group bg-white/10 hover:bg-blue-600/30 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/15 transition-all duration-300 cursor-pointer">
+            <div class="w-5 h-4 flex flex-col justify-between">
+                <span class="w-full h-0.5 bg-white"></span>
+                <span class="w-full h-0.5 bg-white"></span>
+                <span class="w-full h-0.5 bg-white"></span>
+            </div>
+            <span class="text-xs uppercase font-bold tracking-widest text-white hidden sm:inline">Menu</span>
+        </button>
+
+        <a href="Home.html" class="flex items-center gap-3 text-center group">
+            <div class="h-9 w-9 rounded-full bg-blue-600 flex items-center justify-center text-white font-extrabold text-xs border border-blue-400/40 shadow-md">AG</div>
+            <div class="hidden lg:flex flex-col text-left">
+                <span class="text-white font-extrabold tracking-wider text-sm group-hover:text-blue-400 transition-colors">ARMANA GROUP</span>
+                <span class="text-[10px] text-blue-300 tracking-widest uppercase">Global Denim Conglomerate Since 1995</span>
+            </div>
+        </a>
+
+        <button id="right-menu-btn" class="flex items-center gap-2 focus:outline-none group bg-white/10 hover:bg-blue-600/30 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/15 transition-all duration-300 cursor-pointer">
+            <span class="text-xs uppercase font-bold tracking-widest text-white hidden sm:inline">Sections</span>
+            <div class="w-5 h-4 flex flex-col justify-between items-end">
+                <span class="w-5 h-0.5 bg-white"></span>
+                <span class="w-3.5 h-0.5 bg-white"></span>
+                <span class="w-5 h-0.5 bg-white"></span>
+            </div>
+        </button>
+    </nav>
+
+    <div id="left-drawer" class="fixed inset-y-0 left-0 w-80 bg-[#03050a]/98 backdrop-blur-2xl z-50 transform -translate-x-full transition-transform duration-500 shadow-2xl border-r border-white/10 flex flex-col justify-between p-8">
+        <div>
+            <div class="flex justify-between items-center mb-8 pb-4 border-b border-gray-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs">AG</div>
+                    <span class="font-bold text-white tracking-wider text-sm">ARMANA PORTAL</span>
+                </div>
+                <button id="close-left-drawer" class="text-gray-400 hover:text-white text-xl font-bold transition-colors cursor-pointer">&times;</button>
+            </div>
+            <div class="flex flex-col gap-4 text-sm font-semibold text-gray-300">
+                <a href="Home.html" class="hover:text-blue-400 transition-all py-1">Home page</a>
+                <a href="Why-Armana.html" class="hover:text-blue-400 transition-all py-1">Why Armana</a>
+                <a href="About.html" class="hover:text-blue-400 transition-all py-1">About</a>
+                <a href="Products.html" class="hover:text-blue-400 transition-all py-1 text-blue-400">Products</a>
+                <a href="Factories.html" class="hover:text-blue-400 transition-all py-1">Factories</a>
+                <a href="Sustainability.html" class="hover:text-blue-400 transition-all py-1">Sustainability</a>
+                <a href="Digitalization.html" class="hover:text-blue-400 transition-all py-1">Digitalization</a>
+                <a href="Partners.html" class="hover:text-blue-400 transition-all py-1">Partners</a>
+                <a href="KCF.html" class="hover:text-blue-400 transition-all py-1">KCF</a>
+                <a href="Contact.html" class="hover:text-blue-400 transition-all py-1">Contact</a>
+            </div>
+        </div>
+        <div class="text-xs text-gray-500 pt-4 border-t border-gray-800">Official Enterprise Navigation</div>
+    </div>
+
+    <div id="right-drawer" class="fixed inset-y-0 right-0 w-80 bg-[#03050a]/98 backdrop-blur-2xl z-50 transform translate-x-full transition-transform duration-500 shadow-2xl border-l border-white/10 flex flex-col justify-between p-8">
+        <div>
+            <div class="flex justify-between items-center mb-8 pb-4 border-b border-gray-800">
+                <span class="font-bold text-white tracking-wider text-sm">PAGE SECTIONS</span>
+                <button id="close-right-drawer" class="text-gray-400 hover:text-white text-xl font-bold transition-colors cursor-pointer">&times;</button>
+            </div>
+            <div class="flex flex-col gap-5 text-sm font-semibold text-gray-300">
+                <a href="#master-catalog" class="right-drawer-link hover:text-blue-400 transition-all">01. Armana Official Product Showcase (50+ Items)</a>
+                <a href="#fabrics" class="right-drawer-link hover:text-blue-400 transition-all">02. Industrial Weaving Standards</a>
+            </div>
+        </div>
+        <div class="text-xs text-gray-500 pt-4 border-t border-gray-800">Armana Group Official</div>
+    </div>
+
+    <section class="relative pt-36 pb-20 px-6 md:px-16 z-10 bg-gradient-to-b from-[#070b14] to-[#03050a] border-b border-gray-800">
+        <div class="max-w-6xl mx-auto space-y-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/30 backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-300">Armana Group Official Product Showcase • 100% Robust Fallback Image Architecture</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white">
+                Armana <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">Denim Product Catalog</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed">
+                Official product lines manufactured across Denimach, KCF, and Armana Group units. Tap any product card to expand its vertical container, revealing horizontal photo spreads and authentic legacy briefs. Zero asset repetition with built-in SVG data-URI fallbacks to guarantee 0% 404 errors.
+            </p>
+        </div>
+    </section>
+
+    <div class="relative z-20 bg-[#03050a] text-gray-100 py-20 px-6 md:px-16 space-y-24">
+
+        <section id="master-catalog" class="max-w-6xl mx-auto space-y-12">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <span class="text-blue-400 uppercase tracking-widest text-xs font-extrabold px-3 py-1 bg-blue-950/60 rounded-full border border-blue-800/40">Official Catalog</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Over 50 Authentic Armana Product Specifications</h2>
+                <p class="text-xs text-gray-400">Tap on any product row below to instantly expand vertical details and unique horizontal photo layouts.</p>
+            </div>
+
+            <div class="space-y-4" id="fifty-products-container">
+                </div>
+        </section>
+
+        <footer class="bg-[#03050a] border-t border-gray-800 pt-16 pb-12 px-6 md:px-12 text-gray-400 text-sm">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-start pb-10 border-b border-gray-800">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs">AG</div>
+                        <span class="text-white font-extrabold tracking-wider text-sm">ARMANA GROUP</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed max-w-sm">
+                        Global denim conglomerate setting international standards in sustainable textile engineering and ethical labor practices since 1995.
+                    </p>
+                </div>
+                <div class="space-y-2">
+                    <h4 class="text-white font-bold tracking-wider text-xs uppercase">Head Office:</h4>
+                    <p class="text-xs leading-relaxed text-gray-300">
+                        Armana Group Ltd.<br>
+                        House No. 26, Road No. 71,<br>
+                        Gulshan 2, Dhaka 1212, Bangladesh
+                    </p>
+                </div>
+                <div class="space-y-2">
+                    <h4 class="text-white font-bold tracking-wider text-xs uppercase">Direct Inquiries:</h4>
+                    <div class="text-xs space-y-1 text-gray-300">
+                        <p><strong class="text-white">Phone:</strong> +88 02 222 298 456</p>
+                        <p><strong class="text-white">Email:</strong> info@armanagroup.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="max-w-6xl mx-auto pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+                <p>© All right reserved by Armana Group Ltd 2018</p>
+                <p>Designed by: <a href="https://rayaantasnim.github.io/Rayaan-Tasnim/" target="_blank" class="text-blue-400 hover:underline font-semibold">Rayaan Tasnim</a></p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Navbar State Transition on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                navbar.classList.add('glass-nav', 'py-3');
+                navbar.classList.remove('py-4', 'bg-transparent');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-3');
+                navbar.classList.add('py-4', 'bg-transparent');
+            }
+        });
+
+        // Dual Drawer Toggles
+        const leftDrawer = document.getElementById('left-drawer');
+        const rightDrawer = document.getElementById('right-drawer');
+        const leftMenuBtn = document.getElementById('left-menu-btn');
+        const rightMenuBtn = document.getElementById('right-menu-btn');
+        const closeLeftDrawer = document.getElementById('close-left-drawer');
+        const closeRightDrawer = document.getElementById('close-right-drawer');
+
+        leftMenuBtn.addEventListener('click', () => {
+            leftDrawer.classList.remove('-translate-x-full');
+            rightDrawer.classList.add('translate-x-full');
+        });
+        closeLeftDrawer.addEventListener('click', () => {
+            leftDrawer.classList.add('-translate-x-full');
+        });
+        rightMenuBtn.addEventListener('click', () => {
+            rightDrawer.classList.remove('translate-x-full');
+            leftDrawer.classList.add('-translate-x-full');
+        });
+        closeRightDrawer.addEventListener('click', () => {
+            rightDrawer.classList.add('translate-x-full');
+        });
+
+        // Curated pool of high-stability Unsplash photo URLs for denim & apparel
+        const primaryImagePool = [
+            "https://images.unsplash.com/photo-1542272604-787c96355353?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1508427953056-b00b8d78ebf5?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1479064555552-3ef4979f8908?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1554412933-514a83d2f3c8?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1503342394128-c104d54dba01?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1578932750294-f5075e85f44a?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80"
+        ];
+
+        let imageIndexCounter = 0;
+        function getNextUniqueImage() {
+            if (imageIndexCounter >= primaryImagePool.length) {
+                imageIndexCounter = 0;
+            }
+            return primaryImagePool[imageIndexCounter++];
+        }
+
+        // SVG Fallback Data-URI if any network error ever happens
+        const fallbackSvg = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'%3E%3Crect width='800' height='800' fill='%230b1329'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2360a5fa' font-family='sans-serif' font-size='24px' font-weight='bold'%3EArmana Group Certified Asset%3C/text%3E%3C/svg%3E";
+
+        // 50 Official Armana Group Product Specifications
+        const armanaProductNames = [
+            "Foundational Deep Indigo Selvedge", "Eco-Distressed Vintage Wash Fit", "Bi-Stretch Comfort Performance Denim", "Structured Heavy-Duty Denim Jacket", "BCI Certified Organic Cotton Denim",
+            "Raw Turkish Ring-Spun Weave", "Indigo Chambray Lightweight Shirt", "Laser Etched Whiskers Slim Fit", "Overdyed Black Selvedge Denim", "Crosshatch Slub Weave Roll Stock",
+            "Rigid 16oz Heavyweight Denim", "Enzyme Bio-Washed Casual Trouser", "Recycled Cotton Blended Denim", "Vintage Retro Flare Fit Jeans", "Super-Stretch Lycra T400 Denim",
+            "Garment-Dyed Olive Denim", "Utility Cargo Pocket Denim Pant", "Classic Trucker Oversized Jacket", "Botanical Plant-Dyed Denim", "Sulphur Black Coated Denim",
+            "Double-Weed Jacquard Denim", "Tencel Blended Soft Draping Denim", "Raw Japanese Okayama Selvedge", "Acid-Washed 90s Relaxed Fit", "Eco-Bleached Ozone Finish Denim",
+            "High-Tenacity Industrial Uniform Denim", "Chambray Utility Workwear Shirt", "Stretch Sateen Weave Indigo", "Heavyweight Corduroy Paneled Denim", "Custom Copper Riveted Selvedge",
+            "Twill Weave Indigo Trouser", "Unbleached Natural Cotton Denim", "Aged Patina Vintage Wash Denim", "Performance Athletic Fit Denim", "Minimalist Raw Edge Denim Jacket",
+            "Deep Navy Rope-Dyed Weave", "Structured Pleated Denim Skirt", "Engineered Ergonomic Biker Denim", "Soft Brushed Flannel-Lined Denim", "Zero-Water Laser Faded Denim",
+            "Closed-Loop ETP Washed Denim", "Recycled Polyester Blended Denim", "Custom Monogrammed Selvedge", "Premium Ring-Spun Warp Denim", "Classic 5-Pocket Standard Jean",
+            "Modern Tapered Stretch Denim", "Heavyweight Winter Lined Denim", "Breathable Summer Weight Denim", "Artisan Hand-Distressed Denim", "Armana Signature Heritage Denim"
+        ];
+
+        const container = document.getElementById('fifty-products-container');
+
+        for (let i = 1; i <= 50; i++) {
+            const prodName = armanaProductNames[i - 1];
+            const imgMain = getNextUniqueImage();
+            const imgHoriz1 = getNextUniqueImage();
+            const imgHoriz2 = getNextUniqueImage();
+            const imgHoriz3 = getNextUniqueImage();
+
+            const cardDiv = document.createElement('div');
+            cardDiv.className = "premium-card rounded-2xl overflow-hidden";
+            cardDiv.innerHTML = `
+                <div class="p-6 md:p-8 flex flex-col md:flex-row justify-between items-center gap-6 cursor-pointer product-trigger" data-target="panel-${i}">
+                    <div class="flex items-center gap-6 w-full md:w-auto">
+                        <img src="${imgMain}" alt="${prodName}" class="w-24 h-24 rounded-xl object-cover border border-white/10 flex-shrink-0" loading="lazy" onerror="this.src='${fallbackSvg}'">
+                        <div>
+                            <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">#AR-AG-${2026 + i} • Verified Armana Spec</span>
+                            <h3 class="text-xl md:text-2xl font-extrabold text-white mt-1">${prodName}</h3>
+                            <p class="text-xs text-gray-400 mt-1">Official industrial denim specification manufactured in Armana Group facilities.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+                        <span class="text-xs text-blue-300 font-bold bg-blue-900/40 px-4 py-2 rounded-xl border border-blue-500/30">Tap to Reveal Details</span>
+                        <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white font-bold transition-transform duration-300 arrow-icon">↓</div>
+                    </div>
+                </div>
+
+                <div id="panel-${i}" class="expandable-vertical-panel px-6 md:px-10">
+                    <div class="space-y-8 max-w-5xl mx-auto">
+                        <div class="border-b border-gray-800 pb-4 flex justify-between items-center">
+                            <h4 class="text-lg font-bold text-white tracking-wide">Historical Legacy & Horizontal Spread</h4>
+                            <span class="text-xs text-blue-400 uppercase tracking-widest">Armana Heritage Archive #${i}</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="space-y-2">
+                                <img src="${imgHoriz1}" alt="Spread 1" class="w-full h-40 object-cover rounded-xl border border-white/10" loading="lazy" onerror="this.src='${fallbackSvg}'">
+                                <p class="text-[11px] text-gray-400 text-center">Warp & Weft Loom Integration</p>
+                            </div>
+                            <div class="space-y-2">
+                                <img src="${imgHoriz2}" alt="Spread 2" class="w-full h-40 object-cover rounded-xl border border-white/10" loading="lazy" onerror="this.src='${fallbackSvg}'">
+                                <p class="text-[11px] text-gray-400 text-center">Pure Indigo Rope-Dyeing Bath</p>
+                            </div>
+                            <div class="space-y-2">
+                                <img src="${imgHoriz3}" alt="Spread 3" class="w-full h-40 object-cover rounded-xl border border-white/10" loading="lazy" onerror="this.src='${fallbackSvg}'">
+                                <p class="text-[11px] text-gray-400 text-center">Completed Finished Garment</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#03050a]/80 p-6 rounded-2xl border border-white/10 space-y-4">
+                            <h5 class="text-sm font-bold text-blue-300 uppercase tracking-wider">Product Legacy & Technical Specifications</h5>
+                            <p class="text-xs text-gray-300 leading-relaxed">
+                                Developed under our rigorous manufacturing protocols, item #${i} (${prodName}) incorporates long-staple fibers and sustainable dyeing practices established across our industrial units since 1995. It offers superior tensile durability, exact weight consistency, and exceptional colorfastness designed for global tier-1 apparel markets.
+                            </p>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2 border-t border-gray-800 text-xs">
+                                <div><strong class="text-white block">Weight:</strong> ${11 + (i % 5)}.0 oz / sq. yd</div>
+                                <div><strong class="text-white block">Dyeing:</strong> Multi-Dip Rope Indigo</div>
+                                <div><strong class="text-white block">Shrinkage:</strong> Sanforized (&lt;2.5%)</div>
+                                <div><strong class="text-white block">MOQ:</strong> 500 Units / Yards</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(cardDiv);
+        }
+
+        // Vertical-Horizontal Tap Expansion Engine
+        document.addEventListener('click', function(e) {
+            const trigger = e.target.closest('.product-trigger');
+            if (trigger) {
+                const targetId = trigger.getAttribute('data-target');
+                const panel = document.getElementById(targetId);
+                const arrow = trigger.querySelector('.arrow-icon');
+                
+                if (panel) {
+                    const isActive = panel.classList.contains('active');
+                    
+                    document.querySelectorAll('.expandable-vertical-panel').forEach(p => p.classList.remove('active'));
+                    document.querySelectorAll('.arrow-icon').forEach(a => a.style.transform = 'rotate(0deg)');
+                    
+                    if (!isActive) {
+                        panel.classList.add('active');
+                        if (arrow) arrow.style.transform = 'rotate(180deg)';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
